@@ -19,14 +19,19 @@ allprojects {
     }
 
     ext {
-        moduleOrg = 'cyrillrx'
-        moduleGroupId = 'com.cyrillrx'
-        moduleWebsite = 'https://github.com/cyrillrx/java_logger'
+        bintrayUser = System.getenv('BINTRAY_USER')
+        bintrayKey = System.getenv('BINTRAY_KEY')
 
-        loggerVersion = '1.6.1'
-        trackerVersion = '0.9.0'
+        moduleOrg = 'cheerz'
+        moduleRepo = 'private-maven'
+        moduleGroupId = 'com.cheerz'
+        moduleWebsite = 'https://github.com/cheerz/java-logger'
+
+        loggerVersion = '1.0.0'
+        trackerVersion = '1.0.0'
     }
 }
+
 repositories {
     mavenCentral()
 }

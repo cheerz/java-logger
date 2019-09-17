@@ -31,9 +31,15 @@ test {
 }
 
 publish {
-    userOrg = project.ext.moduleOrg
-    groupId = project.ext.moduleGroupId
-    website = project.ext.moduleWebsite
+    // Bintray credentials
+    bintrayUser = project.bintrayKey
+    bintrayKey = project.bintrayKey
+
+    // Repository config
+    userOrg = project.moduleOrg
+    repoName = project.moduleRepo
+    groupId = project.moduleGroupId
+    website = project.moduleWebsite
     artifactId = 'logger'
     publishVersion = project.ext.loggerVersion
     desc = 'A modular logger component in java.'

@@ -8,12 +8,18 @@ targetCompatibility = '1.8'
 sourceCompatibility = '1.8'
 
 repositories {
-    maven { url 'http://dl.bintray.com/cyrillrx/maven' }
+    maven {
+        url "https://cheerz.bintray.com/private-maven"
+        credentials {
+            username System.getenv('BINTRAY_USER')
+            password System.getenv('BINTRAY_KEY')
+        }
+    }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation "com.cyrillrx:logger:$loggerVersion"
+    implementation "com.cheerz:logger:$loggerVersion"
     testImplementation 'junit:junit:4.12'
 }
 
@@ -36,9 +42,15 @@ test {
 }
 
 publish {
-    userOrg = project.ext.moduleOrg
-    groupId = project.ext.moduleGroupId
-    website = project.ext.moduleWebsite
+    // Bintray credentials
+    bintrayUser = project.bintrayKey
+    bintrayKey = project.bintrayKey
+
+    // Repository config
+    userOrg = project.moduleOrg
+    repoName = project.moduleRepo
+    groupId = project.moduleGroupId
+    website = project.moduleWebsite
     artifactId = 'tracker'
     publishVersion = project.ext.trackerVersion
     desc = 'A modular tracker component.'
