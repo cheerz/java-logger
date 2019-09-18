@@ -13,9 +13,6 @@ import java.util.Set;
 @SuppressWarnings("unused")
 public class Logger {
 
-    private static final String ERROR_ALREADY_INITIALIZED = "initialize() has already been called.";
-    private static final String ERROR_INITIALIZE_FIRST = "Call initialize() before using the Logger.";
-
     private static Logger instance;
 
     private final Set<LogChild> loggers;
@@ -24,13 +21,14 @@ public class Logger {
 
     protected Logger() { loggers = new HashSet<>(); }
 
-    public static void initialize() {
-        checkMultiInitialization();
+    public static void release() {
+        if (instance == null) {
+            return;
+        }
 
-        instance = new Logger();
+        instance.loggers.clear();
+        instance = null;
     }
-
-    public static void release() { instance = null; }
 
     public static synchronized ExceptionCatcher setCatcher(ExceptionCatcher catcher) {
         checkInitialized();
@@ -124,21 +122,11 @@ public class Logger {
 
     /**
      * Checks whether the component has been initialized.<br />
-     * Throws if not.
+     * Initializes it if needed.
      */
     private static void checkInitialized() {
         if (instance == null) {
-            throw new IllegalStateException(ERROR_INITIALIZE_FIRST);
-        }
-    }
-
-    /**
-     * Prevents multiple initialization of the component.<br />
-     * Throws if the component has already been initialized.
-     */
-    private static void checkMultiInitialization() {
-        if (instance != null) {
-            throw new IllegalStateException(ERROR_ALREADY_INITIALIZED);
+            instance = new Logger();
         }
     }
 

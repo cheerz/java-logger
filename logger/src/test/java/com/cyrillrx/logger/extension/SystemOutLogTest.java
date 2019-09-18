@@ -16,9 +16,6 @@ public class SystemOutLogTest {
 
     private static final String TAG = SystemOutLogTest.class.getSimpleName();
 
-    @BeforeClass
-    public static void initLogger() { L.initialize(); }
-
     @AfterClass
     public static void releaseLogger() { L.release(); }
 

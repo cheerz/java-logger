@@ -27,7 +27,7 @@ allprojects {
         moduleGroupId = 'com.cheerz'
         moduleWebsite = 'https://github.com/cheerz/java-logger'
 
-        loggerVersion = '1.0.0'
+        loggerVersion = '1.0.1'
         trackerVersion = '1.0.0'
     }
 }
