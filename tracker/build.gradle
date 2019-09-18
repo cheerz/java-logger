@@ -51,7 +51,7 @@ publish {
     repoName = project.moduleRepo
     groupId = project.moduleGroupId
     website = project.moduleWebsite
-    artifactId = 'tracker'
+    artifactId = 'lrx-tracker'
     publishVersion = project.ext.trackerVersion
     desc = 'A modular tracker component.'
 }

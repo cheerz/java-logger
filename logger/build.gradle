@@ -40,7 +40,7 @@ publish {
     repoName = project.moduleRepo
     groupId = project.moduleGroupId
     website = project.moduleWebsite
-    artifactId = 'logger'
+    artifactId = 'lrx-logger'
     publishVersion = project.ext.loggerVersion
     desc = 'A modular logger component in java.'
 }
