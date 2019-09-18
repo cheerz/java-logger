@@ -24,8 +24,6 @@ public class StreamingTrackerTest {
 
     @BeforeClass
     public static void initLogger() {
-
-        Logger.initialize();
         Logger.addChild(new SystemOutLog(Severity.VERBOSE));
     }
 
